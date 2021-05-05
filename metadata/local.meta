@@ -1,0 +1,152 @@
+[transforms/record_types]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 6.4.3
+modtime = 1472699109.049102000
+
+[views/dns_query_info]
+version = 8.1.3
+modtime = 1620196929.116132000
+
+[datamodels/pDNS_CIM]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = nobody
+version = 8.1.3
+modtime = 1619558782.851718000
+
+[models/pDNS_CIM]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = nobody
+version = 8.1.3
+modtime = 1619558782.859607000
+
+[lookups/cdn.csv]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.5.0
+modtime = 1475296062.644511000
+
+[transforms/cdn]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.5.0
+modtime = 1475296175.363091000
+
+[macros/urlp]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.5.1
+modtime = 1480046354.168858000
+
+[inputs/upload_pcap%3A%2F%2Ftest]
+owner = admin
+version = 6.5.1
+modtime = 1480193408.099227000
+
+[macros/cdn_list]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.5.2
+modtime = 1488708329.270912000
+
+[eventtypes/multicast]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.5.1
+modtime = 1484765044.086922000
+
+[app/ui]
+version = 7.0.0
+modtime = 1509418341.636736000
+
+[app/launcher]
+version = 7.0.0
+modtime = 1509418341.638877000
+
+[app/package/check_for_updates]
+version = 7.0.0
+modtime = 1509418341.639436000
+
+[transforms/mw_domain_lookup]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 7.0.0
+modtime = 1509499978.006782000
+
+[lookups/domains.csv]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 7.0.2
+modtime = 1520200247.691686000
+
+[lookups/record_types.csv]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 7.0.2
+modtime = 1520200255.748285000
+
+[savedsearches/query%20type]
+version = 7.0.2
+modtime = 1520210768.954593000
+
+[savedsearches/DNS%20Blacklist%20Alert]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 7.2.0
+modtime = 1539708355.757773000
+
+[views/domain_detail]
+version = 8.1.3
+modtime = 1620107534.428759000
+
+[views/about]
+version = 7.3.0
+modtime = 1561610864.041325000
+
+[indexes/corelight]
+owner = admin
+version = 8.1.3
+modtime = 1619553502.028863000
+
+[inputs/http%3A%2F%2Fcorelight_collector]
+access = read : [ admin ], write : [ admin ]
+export = none
+owner = admin
+version = 8.1.3
+modtime = 1619493028.069413000
+
+[datamodels/pDNS_CIM2]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = nobody
+version = 8.1.3
+modtime = 1620116760.507534000
+
+[models/pDNS_CIM2]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = nobody
+version = 8.1.3
+modtime = 1620109025.759327000
+
+[indexes/zeek_dns]
+owner = admin
+version = 8.1.3
+modtime = 1620102947.143690000
+
+[savedsearches/update%20zeek%20%20DNS%20summary]
+owner = admin
+version = 8.1.3
+modtime = 1620104981.054058000
