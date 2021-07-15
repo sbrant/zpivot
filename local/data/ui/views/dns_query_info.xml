@@ -72,7 +72,7 @@
       <chart>
         <title>Top Domains Queried</title>
         <search>
-          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.query_type=$querytype$ DNS.ut_domain!="None" DNS.src=$client_ip$ BY DNS.ut_domain
+          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.ut_domain!="None" DNS.src=$client_ip$ BY DNS.ut_domain
 | search $cdn_match$ 
 | rename DNS.ut_domain AS domain
 | sort limit=10 -count</query>
@@ -90,7 +90,7 @@
         <option name="height">300</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_self">/app/zb_pivotdns/dns_query_info?form.poq=$click.value$</link>
+          <link target="_self">/app/zpivot/dns_query_info?form.poq=$click.value$</link>
         </drilldown>
       </chart>
     </panel>
@@ -98,7 +98,7 @@
       <chart>
         <title>Rarest Domains Queried</title>
         <search>
-          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.query_type=$querytype$ DNS.ut_domain!="None" DNS.src=$client_ip$ BY DNS.ut_domain 
+          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.ut_domain!="None" DNS.src=$client_ip$ BY DNS.ut_domain 
 | search $cdn_match$
 | rename DNS.ut_domain AS domain
 | sort limit=10 count</query>
@@ -114,7 +114,7 @@
         <option name="height">302</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_self">/app/zb_pivotdns/dns_query_info?form.poq=$click.value$</link>
+          <link target="_self">/app/zpivot/dns_query_info?form.poq=$click.value$</link>
         </drilldown>
       </chart>
     </panel>
@@ -122,7 +122,7 @@
       <chart>
         <title>Top Clients</title>
         <search>
-          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.query_type=$querytype$ BY DNS.src 
+          <query>| tstats count FROM datamodel=pDNS_CIM2 BY DNS.src 
 | rename DNS.src AS client
 | sort limit=10 -count</query>
           <earliest>$time_range.earliest$</earliest>
@@ -136,7 +136,7 @@
         <option name="height">304</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_self">/app/zb_pivotdns/dns_query_info?form.client_ip=$click.value$&amp;form.time_range=$time_range$</link>
+          <link target="_self">/app/zpivot/dns_query_info?form.client_ip=$click.value$&amp;form.time_range=$time_range$</link>
         </drilldown>
       </chart>
     </panel>
@@ -176,7 +176,7 @@
       <table>
         <title>DNS Servers Queried (any query type)</title>
         <search>
-          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.src=$client_ip$ BY DNS.dest
+          <query>| tstats count FROM datamodel=pDNS_CIM2 WHERE DNS.src=$client_ip$ DNS.dest!=224.0.0.251 DNS.dest!=ff02::fb BY DNS.dest
 | rename DNS.dest AS "DNS Server"
 | sort -count</query>
           <earliest>$time_range.earliest$</earliest>
@@ -194,7 +194,7 @@
         <title>Click row to drill down on query detail or click on arrow to the left to see frequency and volume over the past 7 days</title>
         <search>
           <query>| datamodel pDNS_CIM2 DNS search 
-| search DNS.query_type=$querytype$ DNS.query=$poq$ DNS.src=$client_ip$ NOT DNS.ut_domain="None" 
+| search DNS.query=$poq$ DNS.src=$client_ip$ NOT DNS.ut_domain="None" 
 | search $cdn_match$ 
 | eval upper_dom=upper('DNS.ut_domain') 
 | eval upper_dom=if(upper_dom == "NONE",'DNS.ut_domain',upper_dom) 
@@ -242,9 +242,10 @@
         <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="wrap">true</option>
-        <format type="sparkline" field="Trend of Queries">
+        <format field="Trend of Queries" type="sparkline">
           <option name="type">bar</option>
           <option name="height">20px</option>
           <option name="barColor">#53A8AF</option>
@@ -266,10 +267,10 @@
       <chart>
         <title>Volume of DNS Events By All Types, Over Selected Time Period</title>
         <search>
-          <query>index=bro sourcetype="bro:dns:json" 
-| where query_type!="*" 
+          <query>index=corelight sourcetype="corelight_dns" 
+| where qtype_name!="*" 
 | search $cdn_match$ src=$client_ip$
-| timechart count by query_type</query>
+| timechart count by qtype_name</query>
           <earliest>$time_range.earliest$</earliest>
           <latest>$time_range.latest$</latest>
         </search>
@@ -299,7 +300,7 @@
         <option name="charting.legend.placement">right</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_self">/app/zb_pivotdns/dns_query_info?form.time_range.earliest=$earliest$&amp;form.time_range.latest=$latest$&amp;form.querytype=$click.name2$</link>
+          <link target="_self">/app/zpivot/dns_query_info?form.time_range.earliest=$earliest$&amp;form.time_range.latest=$latest$&amp;form.querytype=$click.name2$</link>
         </drilldown>
       </chart>
     </panel>

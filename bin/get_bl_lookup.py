@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # --------------------------------------------------------------
 #
 # Example script to build a blacklist lookup from online sources.
@@ -11,7 +11,7 @@
 # --------------------------------------------------------------
 
 import csv
-import urllib
+import urllib.request
 import zipfile
 import re
 
@@ -19,7 +19,8 @@ src_url = 'http://malware-domains.com/files/domains.zip'
 local_file = '/tmp/domains.zip'
 
 def fetch_list():
-    urllib.urlretrieve(src_url, local_file)
+    urllib.request.urlopen(src_url).read()
+        local_file = response.read()
 
 def prep_lookup():
     with zipfile.ZipFile(local_file, 'r') as zip_file:
