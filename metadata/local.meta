@@ -7,7 +7,7 @@ modtime = 1472699109.049102000
 
 [views/dns_query_info]
 version = 8.2.0
-modtime = 1626161067.996460000
+modtime = 1626475380.297967000
 
 [datamodels/pDNS_CIM]
 access = read : [ * ], write : [ admin, power ]
