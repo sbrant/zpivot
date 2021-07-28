@@ -149,7 +149,7 @@ modtime = 1620102947.143690000
 [savedsearches/update%20zeek%20%20DNS%20summary]
 owner = admin
 version = 8.2.0
-modtime = 1626155288.988384000
+modtime = 1627448447.054870000
 
 [inputs/http%3A%2F%2Fcorelight-ap-200]
 access = read : [ admin ], write : [ admin ]
@@ -157,3 +157,10 @@ export = none
 owner = admin
 version = 8.2.0
 modtime = 1626146979.267120000
+
+[inputs/http%3A%2F%2Fcorelight-sensor]
+access = read : [ admin ], write : [ admin ]
+export = none
+owner = admin
+version = 8.2.0
+modtime = 1626999566.767572000
