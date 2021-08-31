@@ -6,8 +6,8 @@ version = 6.4.3
 modtime = 1472699109.049102000
 
 [views/dns_query_info]
-version = 8.2.0
-modtime = 1626475380.297967000
+version = 8.2.2
+modtime = 1630397210.694557000
 
 [datamodels/pDNS_CIM]
 access = read : [ * ], write : [ admin, power ]
@@ -112,8 +112,8 @@ version = 8.1.3
 modtime = 1620107534.428759000
 
 [views/about]
-version = 7.3.0
-modtime = 1561610864.041325000
+version = 8.2.0
+modtime = 1628011766.308433000
 
 [indexes/corelight]
 owner = admin
@@ -149,7 +149,7 @@ modtime = 1620102947.143690000
 [savedsearches/update%20zeek%20%20DNS%20summary]
 owner = admin
 version = 8.2.0
-modtime = 1627448447.054870000
+modtime = 1627677921.602906000
 
 [inputs/http%3A%2F%2Fcorelight-ap-200]
 access = read : [ admin ], write : [ admin ]
@@ -164,3 +164,27 @@ export = none
 owner = admin
 version = 8.2.0
 modtime = 1626999566.767572000
+
+[macros/cl_index]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.2.0
+modtime = 1627677886.093472000
+
+[inputs/http%3A%2F%2Fcribl_in]
+access = read : [ admin ], write : [ admin ]
+export = none
+owner = admin
+version = 8.2.0
+modtime = 1628536085.190365000
+
+[views/dns_server_highlight]
+owner = admin
+version = 8.2.2
+modtime = 1630393907.017856000
+
+[views/dns_servers]
+owner = admin
+version = 8.2.2
+modtime = 1630396244.998628000

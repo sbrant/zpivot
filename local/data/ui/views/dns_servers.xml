@@ -1,0 +1,47 @@
+<form theme="dark">
+  <label>DNS Servers</label>
+  <description>Highlight DNS transaction data to a particular server</description>
+  <fieldset submitButton="false">
+    <input type="time" token="time_window">
+      <label>Time Window</label>
+      <default>
+        <earliest>-15m</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="dns_resp">
+      <label>DNS Server</label>
+      <fieldForLabel>dest</fieldForLabel>
+      <fieldForValue>dest</fieldForValue>
+      <search>
+        <query>eventtype=corelight_dns 
+| stats count by dest
+| fields dest</query>
+        <earliest>$time_window.earliest$</earliest>
+        <latest>$time_window.latest$</latest>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Transaction Highlights</title>
+      <table>
+        <search>
+          <query>eventtype=corelight_dns id.resp_h=$dns_resp$
+| stats count by id.orig_p, id.orig_h, id.resp_p, qtype_name, query, answer
+| fields - count</query>
+          <earliest>$time_window.earliest$</earliest>
+          <latest>$time_window.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>

@@ -151,9 +151,11 @@
           <latest>$time_range.latest$</latest>
         </search>
         <option name="count">8</option>
-        <option name="drilldown">none</option>
+        <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
-        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_self">/app/zpivot/dns_query_info?form.poq=*.$click.value$</link>
+        </drilldown>
       </table>
     </panel>
     <panel>
@@ -183,8 +185,10 @@
           <latest>$time_range.latest$</latest>
         </search>
         <option name="count">8</option>
-        <option name="drilldown">none</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="drilldown">cell</option>
+        <drilldown>
+          <link target="_blank">/app/zpivot/dns_servers?form.dns_resp=$click.value$</link>
+        </drilldown>
       </table>
     </panel>
   </row>
@@ -269,7 +273,7 @@
       <chart>
         <title>Volume of DNS Events By All Types, Over Selected Time Period</title>
         <search>
-          <query>index=corelight sourcetype="corelight_dns" 
+          <query>index=`cl_index` sourcetype=corelight_dns OR sourcetype=corelight_dns_red 
 | where qtype_name!="*" 
 | search $cdn_match$ src=$client_ip$
 | timechart count by qtype_name</query>
